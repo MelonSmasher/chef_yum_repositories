@@ -1,4 +1,3 @@
-# yum_repositories
+# Yum Repositories
 
-TODO: Enter the cookbook description here.
 
