@@ -5,6 +5,7 @@
 
 def manage_repo(
     repo,
+    name_opt,
     baseurl_opt,
     cost_opt,
     clean_headers_opt,
@@ -50,6 +51,12 @@ def manage_repo(
 )
 
   yum_repository repo do
+
+    if name_opt
+      name name_opt
+    else
+      name repo
+    end
 
     if baseurl_opt
       baseurl baseurl_opt
@@ -231,6 +238,11 @@ if node['yum_repositories']['repositories']
 
     unless repo_options['ignore_failures'].nil?
       ignore_fail_option = repo_options['ignore_failures']
+    end
+
+    name_opt = repo
+    if repo_options['name']
+      name_opt = repo_options['name']
     end
 
     baseurl_opt = false
@@ -474,6 +486,7 @@ if node['yum_repositories']['repositories']
       begin
         manage_repo(
             repo,
+            name_opt,
             baseurl_opt,
             cost_opt,
             clean_headers_opt,
@@ -528,6 +541,7 @@ if node['yum_repositories']['repositories']
     else
       manage_repo(
           repo,
+          name_opt,
           baseurl_opt,
           cost_opt,
           clean_headers_opt,

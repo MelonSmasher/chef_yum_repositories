@@ -64,6 +64,7 @@ node['yum_repositories']['repositories'] = [
     "action" => "create"
   ],
   "influxdb" => [
+    "name" => "InfluxDB",
     "ignore_failures" => false, # Overriding the global settings set earlier
     "baseurl" => "https://repos.influxdata.com/rhel/\\$releasever/\\$basearch/stable",
     "gpgcheck" => true,
@@ -88,6 +89,7 @@ JSON usage:
         "action": "create"
       },
       "influxdb": {
+        "name": "InfluxDB",
         "ignore_failures": false,
         "baseurl": "https://repos.influxdata.com/rhel/\\$releasever/\\$basearch/stable",
         "gpgcheck": true,
